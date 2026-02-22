@@ -1,12 +1,9 @@
-# sync-duckdb-to-motherduck
+# Sync local DuckDB data to MotherDuck
+
+Showcasing different ways of syncing local DuckDB data to MotherDuck (serverless DuckDB).
 
 Copy-paste reference for syncing local DuckDB data to [MotherDuck](https://motherduck.com). SQL, Python, and Bash methods — pick what fits.
 
-## Prerequisites
-
-- [DuckDB](https://duckdb.org/docs/installation/) v1.1+ (for `CREATE OR REPLACE DATABASE ... FROM` syntax)
-- A [MotherDuck](https://app.motherduck.com/) account and API token
-- Set your token: `export MOTHERDUCK_TOKEN=your_token_here`
 
 ## Methods at a Glance
 
@@ -110,7 +107,6 @@ python sync_duckdb.py --parquet 'data/*.parquet' my_remote_db events
 
 - **Physical copy.** All methods above create a full physical copy — not a live link. Re-run to update.
 - **Large tables.** For very large tables, consider chunking inserts or using `COPY FROM DATABASE` which handles this internally.
-- **Context persistence.** When using the DuckDB CLI interactively, `ATTACH 'md:'` persists for the session. You don't need to re-attach between queries.
 - **Token via `.env`.** Copy `.env.example` to `.env` and source it: `source .env && export MOTHERDUCK_TOKEN`
 
 ## Links
@@ -119,3 +115,7 @@ python sync_duckdb.py --parquet 'data/*.parquet' my_remote_db events
 - [DuckDB Documentation](https://duckdb.org/docs/)
 - [DuckDB ATTACH Statement](https://duckdb.org/docs/sql/statements/attach.html)
 - [MotherDuck Python SDK](https://motherduck.com/docs/integrations/languages/python/)
+
+## Prerequisites
+
+- A [MotherDuck](https://app.motherduck.com/) account and API token (set with: `export MOTHERDUCK_TOKEN=your_token_here`)
