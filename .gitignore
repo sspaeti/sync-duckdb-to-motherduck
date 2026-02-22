@@ -1,0 +1,6 @@
+*.db
+*.duckdb
+*.parquet
+.env
+__pycache__/
+.venv/
